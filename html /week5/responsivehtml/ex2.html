@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* --- Base Styles (Shared & Desktop Layout) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space out logo and links */
+    align-items: center;
+    background-color: #333;
+    padding: 15px 25px;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Hide the checkbox and the menu icon by default (for desktop) */
+#menu-toggle,
+.menu-icon {
+    display: none;
+}
+
+/* Desktop Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex; /* Flexbox for horizontal layout */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.nav-links li a:hover {
+    background-color: #555;
+}
+
+/* --- Mobile Adaptations (Screen size up to 768px) --- */
+@media (max-width: 768px) {
+    .nav-links {
+        /* Mobile: Initial state is hidden (dropdown) */
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Position below the header/logo */
+        left: 0;
+        background-color: #333;
+        text-align: center;
+    }
+
+    .nav-links li {
+        border-top: 1px solid #444;
+    }
+
+    /* Show the hamburger icon */
+    .menu-icon {
+        display: block;
+        font-size: 2em;
+        cursor: pointer;
+    }
+
+    /* Target the hidden checkbox when it IS checked */
+    /* This uses the General Sibling Combinator (~) to show the links */
+    #menu-toggle:checked ~ .nav-links {
+        display: flex; /* Show the links when the checkbox is checked */
+    }
+}
+</style>
+<body>
+    <nav class="navbar">
+    <div class="logo">MyBrand</div>
+
+    <input type="checkbox" id="menu-toggle">
+
+    <label for="menu-toggle" class="menu-icon">
+        &#9776; </label>
+
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+    
+</body>
+</html>

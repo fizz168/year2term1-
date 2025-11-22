@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Flexbox Layout (Dark Theme)</title>
+    <style>
+        /* Base Styling & Variables (Dark Theme) */
+        :root {
+            --header-bg: #404040; /* Darker Header/Footer */
+            --content-bg: #2d2d2d; /* Dark Content Area */
+            --sidebar-bg: #1c1c1c; /* Very Dark Sidebar */
+            --footer-bg: #404040;
+            --text-color: #f0f0f0; /* Light Text */
+            --accent-color: #8c8c8c; /* Lighter borders/details */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f4f7; /* Light background outside the main content wrapper */
+        }
+        
+        /* Center the main wrapper for larger screens */
+        .page-wrapper {
+            display: flex;
+            flex-direction: column; 
+            flex-grow: 1; 
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* --- Global Component Styling --- */
+        header, footer, .main-content, .sidebar {
+            padding: 20px;
+            margin: 0;
+            border-radius: 4px; /* Slightly squarer corners to match the diagram */
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border: 1px solid var(--accent-color); /* Light border */
+        }
+
+        /* --- 1. MOBILE LAYOUT (Default: Below 600px) --- */
+
+        /* Header Styling (Mobile) */
+        header {
+            background-color: var(--header-bg);
+            color: var(--text-color);
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        /* Content Wrapper for Main and Sidebar (Mobile: Stacks) */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column; /* Stacks content and sidebar vertically */
+            flex-grow: 1;
+        }
+
+        /* Content and Sidebar Styling (Mobile: Equal Width) */
+        .main-content {
+            background-color: var(--content-bg);
+            flex: 1; 
+        }
+
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            flex: 1; 
+        }
+
+        /* Footer Styling (Mobile) */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--text-color);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 15px;
+        }
+        
+        footer p {
+            margin: 0;
+        }
+
+
+        /* --- 2. MEDIUM SCREENS (600px to 900px) --- */
+        @media (min-width: 600px) {
+            /* Header and Footer Enlargement */
+            header {
+                padding: 25px 20px;
+            }
+            header h1 {
+                font-size: 1.4em;
+            }
+            
+            footer {
+                padding: 18px 20px;
+            }
+
+            /* Main Area Switches to Two Columns (Row) */
+            .content-wrapper {
+                flex-direction: row; /* Content and Sidebar side-by-side */
+                gap: 15px; 
+            }
+
+            /* Content and Sidebar Styling (Medium: Equal Width) */
+            .main-content {
+                flex: 1; /* Content takes 50% */
+            }
+            
+            .sidebar {
+                flex: 1; /* Sidebar takes 50% */
+            }
+        }
+
+        /* --- 3. LARGE SCREENS (900px and wider) --- */
+        @media (min-width: 900px) {
+            .page-wrapper {
+                padding: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            /* Header and Footer More Padding/Larger Text */
+            header {
+                padding: 35px 40px;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            footer {
+                padding: 25px 40px;
+            }
+
+            /* Content Area takes more space, Sidebar shrinks */
+            .main-content {
+                flex: 3; /* Content takes 75% */
+            }
+            
+            .sidebar {
+                flex: 1; /* Sidebar takes 25% */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <header>
+            <h1>Responsive Header</h1>
+        </header>
+
+        <div class="content-wrapper">
+            <section class="main-content">
+                <h2>Main Content</h2>
+                <p>This area takes up the full width on mobile devices.</p>
+                <p>It switches to a 50% width on medium screens (600px+), sitting next to the sidebar.</p>
+                <p>Finally, on large screens (900px+), it expands to 75% of the content width to prioritize the main information.</p>
+            </section>
+
+            <aside class="sidebar">
+                <h3>Sidebar</h3>
+                <p>This is the secondary content area.</p>
+                <ul>
+                    <li>Element 1</li>
+                    <li>Element 2</li>
+                    <li>Element 3</li>
+                </ul>
+            </aside>
+        </div>
+
+        <footer>
+            <p>Footer</p>
+        </footer>
+    </div>
+
+</body>
+</html>

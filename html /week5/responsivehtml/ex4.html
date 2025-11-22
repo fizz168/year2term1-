@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 4: Media & Clamp</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-top: 40px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        /* --- PART 1: @media only screen --- */
+        
+        .wrapper-media {
+            background: white;
+            padding: 50px;
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            border: 1px solid #ddd;
+        }
+
+        .content span {
+            padding: 10px 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            border-radius: 5px;
+        }
+
+        /* Default State (Desktop/Large) */
+        .big {
+            display: inline-block;
+            background-color: #7cbd1e; /* Green */
+        }
+
+        .small {
+            display: none; /* Hidden by default */
+            background-color: #ff6b6b; /* Red */
+        }
+
+        /* Media Query: When screen is smaller than 768px */
+        @media only screen and (max-width: 768px) {
+            .big {
+                display: none; /* Hide BIG */
+            }
+            .small {
+                display: inline-block; /* Show SMALL */
+            }
+        }
+
+        /* --- PART 2: clamp() property --- */
+
+        .wrapper-clamp {
+            background: white;
+            padding: 50px;
+            width: 100%; /* Container allows full width */
+            display: flex;
+            justify-content: center;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        /* THE GREEN BOX */
+        .green-box {
+            height: 300px;
+            background-color: #d4e157; /* Lime Green */
+            
+            /* REQUIREMENT:
+               1. Never smaller than 300px
+               2. In between width: 100%
+               3. Never bigger than 800px
+            */
+            width: clamp(300px, 100%, 800px);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Part 1: Media Query -->
+    <h2>1. with "@media only screen"</h2>
+    <div class="wrapper-media">
+        <div class="content">
+            <span class="small">I'M SMALL </span>
+            <span class="big">I'm BIG </span>
+        </div>
+    </div>
+    <p><em>Resize the window to see the text change!</em></p>
+
+
+    <!-- Part 2: Clamp Function -->
+    <h2>2. with "clamp" property</h2>
+    <div class="wrapper-clamp">
+        <div class="content green-box"></div>
+    </div>
+    <p><em>This box will never shrink below 300px and never grow above 800px.</em></p>
+
+</body>
+</html>
