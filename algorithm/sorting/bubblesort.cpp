@@ -14,29 +14,7 @@ void bubblesort(int arr[], int n){ // time complexity is o(n^2)
     }
   
 }
-void selectionSort(int arr[], int n){ // time complexity o(n^2)
-    for(int i = 0; i < n - 1; i++){
-    int smallestIndex = i; //unsorted part
-    for(int j = i + 1; j < n; j++){
-        if(arr[j] < arr[smallestIndex]){ 
-            smallestIndex = j;
-        }
-    }
-    swap(arr[i], arr[smallestIndex]);// swap between unsorted and the smallest element
-    }
-}
-void insertionsort(int arr[], int n){
-    for(int i = 1; i < n; i++){
-        int cur = arr[i];
-        int prv = i - 1;
-        while(prv >= 0 && arr[prv] > cur){
-            arr[prv + 1] = arr[prv];
-            prv++;
-        }
-        arr[prv + 1] = cur;//placing cur element in it correct position
-    }
 
-}
 
 void printArr(int arr[], int n){
     for(int i = 0; i < n ; i++){
@@ -50,7 +28,7 @@ int main(){
     int n = sizeof(arr)/sizeof(arr[0]); // auto count size of array 
     // bubblesort(arr, n);
     // printArr(arr, n);
-    selectionSort(arr, n);
+    
     printArr(arr, n);
 
     return 0;
