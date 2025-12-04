@@ -1,24 +1,276 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>StudyHub — Learning Resources</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    // Custom Colors from :root variables
+                    colors: {
+                        // The explicit colors are provided to ensure the CDN version works correctly.
+                        'bg': '#f8fafc',    // --bg
+                        'card': '#ffffff',  // --card
+                        'muted': '#64748b', // --muted
+                        'accent': '#2563eb',// --accent
+                        'brand-purple': '#4f46e5', // Logo gradient start
+                        'brand-cyan': '#06b6d4',   // Logo gradient end
+                        'input-border': '#e6eef9', // Input border color
+                        'progress-bg': '#eef2ff',  // Progress bar background
+                        'feature-yellow': '#fff7ed',
+                        'feature-green': '#ecfccb',
+                        'progress-grad-1': '#7c3aed',
+                        'progress-grad-2': '#06b6d4',
+                    },
+                    // Custom Spacing/Sizing from :root variables
+                    borderRadius: {
+                        'app': '12px',    // --radius
+                        'input': '8px',   // From input styles
+                        'logo': '10px',   // From .logo
+                    },
+                    maxWidth: {
+                        'app': '1100px', // --max-width
+                    },
+                    spacing: {
+                        // Custom spacings for a better match to your original CSS
+                        '3.5': '14px', // From .resources gap
+                        '4.5': '18px', // From footer margin, feature padding
+                    },
+                    // Custom font family definition
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    </head>
+    <body class="font-sans text-slate-900 leading-[1.45] h-full bg-bg flex justify-center items-start p-6 
+             sm:p-3.5">
+    <div class="w-full max-w-app" role="main">
+        <header class="flex justify-between items-center gap-4 mb-6 
+                       sm:flex-col sm:items-start sm:gap-3">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 flex items-center justify-center text-white font-bold 
+                            shadow-[0_6px_18px_rgba(15,23,42,0.08)] rounded-logo 
+                            bg-gradient-to-br from-brand-purple to-brand-cyan">SH</div>
+                <div>
+                    <div class="font-extrabold">StudyHub</div>
+                    <div class="text-[13px] text-muted">Learn together • Build faster</div>
+                </div>
+            </div>
 
-    <!-- Tailwind CSS CDN link -->
-    <link href=
-"https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" 
-        rel="stylesheet">
-</head>
+            <nav class="flex gap-[18px] items-center sm:order-2" aria-label="Primary">
+                <a href="#courses" class="text-muted no-underline font-semibold px-3 py-2 rounded-lg hover:text-accent transition">Courses</a>
+                <a href="#resources" class="text-muted no-underline font-semibold px-3 py-2 rounded-lg hover:text-accent transition">Resources</a>
+                <a href="#community" class="text-muted no-underline font-semibold px-3 py-2 rounded-lg hover:text-accent transition">Community</a>
+                <a href="#signup" class="bg-accent text-white font-semibold px-3 py-2 rounded-lg">Get Started</a>
+            </nav>
+        </header>
 
-<body class="m-4">
-    <h1 class="text-green-500 text-4xl font-bold">nigga
-    </h1>
+        <section class="grid grid-cols-[1fr_420px] gap-6 items-center mb-7 
+                        md:grid-cols-1" aria-labelledby="hero-heading">
+            <div class="rounded-app shadow-[0_6px_20px_rgba(2,6,23,0.06)] p-7 
+                        bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.9))]">
+                <h1 id="hero-heading" class="text-[28px] mb-3 
+                                          sm:text-[22px]">Your weekly learning playground</h1>
+                <p class="text-muted mb-[18px]">Curated bite-sized courses, hands-on projects, and community challenges to keep you
+                    learning consistently.</p>
+                <div class="flex gap-3">
+                    <button class="cursor-pointer font-bold px-4 py-3 rounded-[10px] border-0 bg-accent text-white hover:bg-blue-700 transition">Explore Courses</button>
+                    <button class="cursor-pointer font-bold px-4 py-3 rounded-[10px] border-0 text-accent border-2 border-solid border-input-border bg-transparent hover:bg-progress-bg transition">Join Community</button>
+                </div>
 
-    <p><strong>banana</strong></p>
+                <hr class="my-[18px] border-none border-t border-t-progress-bg">
 
-    <p>
-       putang ina mo
-    </p>
+                <div class="flex gap-3 flex-wrap">
+                    <div class="min-w-[160px]">
+                        <div class="text-[13px] text-muted">Next live workshop</div>
+                        <div class="font-bold">Stateful APIs • Dec 15</div>
+                    </div>
+                    <div class="min-w-[160px]">
+                        <div class="text-[13px] text-muted">Active learners</div>
+                        <div class="font-bold">3,412</div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="rounded-app shadow-[0_6px_20px_rgba(2,6,23,0.06)] p-7 
+                          bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.9))]" aria-labelledby="signup-title">
+                <h2 id="signup-title" class="text-[18px] mb-2 font-bold">Start your free plan</h2>
+                <p class="text-muted mb-3">No credit card — upgrade anytime.</p>
+                <form id="signup" class="flex flex-col gap-[10px]">
+                    <input type="text" placeholder="Full name"
+                        class="p-[10px] rounded-input border border-[1px] border-solid border-input-border focus:ring-2 focus:ring-accent focus:border-accent" />
+                    <input type="email" placeholder="Email address"
+                        class="p-[10px] rounded-input border border-[1px] border-solid border-input-border focus:ring-2 focus:ring-accent focus:border-accent" />
+                    <button type="submit" class="cursor-pointer font-bold px-4 py-3 rounded-[10px] border-0 bg-accent text-white hover:bg-blue-700 transition">Create account</button>
+                </form>
+            </aside>
+        </section>
+
+        <section class="grid grid-cols-[repeat(3,1fr)] gap-4 mb-7 
+                        md:grid-cols-[repeat(2,1fr)] sm:grid-cols-1" aria-label="features">
+            <div class="bg-card shadow-[0_6px_18px_rgba(2,6,23,0.04)] flex gap-3 items-start p-[18px] rounded-xl">
+                <div
+                    class="w-[46px] h-[46px] rounded-logo bg-progress-bg flex items-center justify-center font-bold text-indigo-800">
+                    PG</div>
+                <div>
+                    <h3 class="text-base mb-1.5 font-semibold">Project Guided</h3>
+                    <p class="text-muted text-sm">Short projects with guided steps and solution walkthroughs.</p>
+                </div>
+            </div>
+
+            <div class="bg-card shadow-[0_6px_18px_rgba(2,6,23,0.04)] flex gap-3 items-start p-[18px] rounded-xl">
+                <div
+                    class="w-[46px] h-[46px] rounded-logo bg-feature-yellow flex items-center justify-center font-bold text-orange-600">
+                    LR</div>
+                <div>
+                    <h3 class="text-base mb-1.5 font-semibold">Learning Roadmaps</h3>
+                    <p class="text-muted text-sm">Structured paths from beginner to job-ready levels.</p>
+                </div>
+            </div>
+
+            <div class="bg-card shadow-[0_6px_18px_rgba(2,6,23,0.04)] flex gap-3 items-start p-[18px] rounded-xl">
+                <div
+                    class="w-[46px] h-[46px] rounded-logo bg-feature-green flex items-center justify-center font-bold text-green-700">
+                    CM</div>
+                <div>
+                    <h3 class="text-base mb-1.5 font-semibold">Community Mentors</h3>
+                    <p class="text-muted text-sm">Mentor hours and peer feedback to accelerate growth.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="grid grid-cols-[repeat(4,1fr)] gap-3.5 mb-7 
+                                        md:grid-cols-[repeat(3,1fr)] sm:grid-cols-[repeat(2,1fr)]" aria-label="resources">
+            <article class="bg-card flex flex-col gap-2 p-3 rounded-[10px]">
+                <img src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcd"
+                    alt="notebook and coffee" class="w-full h-[110px] object-cover rounded-lg sm:h-[90px]">
+                <h4 class="text-[15px] font-semibold">How to build a daily coding habit</h4>
+                <p class="text-[13px] text-muted">10 min read • Beginner</p>
+            </article>
+
+            <article class="bg-card flex flex-col gap-2 p-3 rounded-[10px]">
+                <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=efgh"
+                    alt="laptop" class="w-full h-[110px] object-cover rounded-lg sm:h-[90px]">
+                <h4 class="text-[15px] font-semibold">Deploy your first Node.js app</h4>
+                <p class="text-[13px] text-muted">30 min guide • Intermediate</p>
+            </article>
+
+            <article class="bg-card flex flex-col gap-2 p-3 rounded-[10px]">
+                <img src="https://images.unsplash.com/photo-1515165562835-c6c8f2d0d6f9?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=ijkl"
+                    alt="whiteboard diagram" class="w-full h-[110px] object-cover rounded-lg sm:h-[90px]">
+                <h4 class="text-[15px] font-semibold">System design crash course</h4>
+                <p class="text-[13px] text-muted">45 min • Intermediate</p>
+            </article>
+
+            <article class="bg-card flex flex-col gap-2 p-3 rounded-[10px]">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=mnop"
+                    alt="team" class="w-full h-[110px] object-cover rounded-lg sm:h-[90px]">
+                <h4 class="text-[15px] font-semibold">How to work in open source</h4>
+                <p class="text-[13px] text-muted">25 min • All levels</p>
+            </article>
+        </section>
+
+        <section class="grid grid-cols-[2fr_1fr] gap-5 mb-7 md:grid-cols-1" aria-label="dashboard">
+            <div>
+                <div class="bg-card p-5 rounded-xl shadow-lg shadow-slate-900/5 mb-[14px]">
+                    <h3 class="font-semibold mb-[10px]">Your active courses</h3>
+                    <div class="flex flex-col gap-3">
+                        
+                        <div class="flex justify-between items-center gap-3">
+                            <div>
+                                <div class="font-bold">Fullstack Basics</div>
+                                <div class="text-[13px] text-muted">Module 3 of 8</div>
+                            </div>
+                            <div class="min-w-[120px]">
+                                <div class="text-[13px] text-muted">Progress</div>
+                                <div class="h-2 rounded-input bg-progress-bg mt-[6px] overflow-hidden">
+                                    <div class="w-[78%] h-full bg-gradient-to-r from-progress-grad-1 to-progress-grad-2"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center gap-3">
+                            <div>
+                                <div class="font-bold">Intro to Databases</div>
+                                <div class="text-[13px] text-muted">Module 1 of 5</div>
+                            </div>
+                            <div class="min-w-[120px]">
+                                <div class="text-[13px] text-muted">Progress</div>
+                                <div class="h-2 rounded-input bg-progress-bg mt-[6px] overflow-hidden">
+                                    <div class="w-[36%] h-full bg-gradient-to-r from-emerald-500 to-progress-grad-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-card p-5 rounded-xl shadow-lg shadow-slate-900/5">
+                    <h3 class="font-semibold mb-[10px]">Community Challenges</h3>
+                    <ul class="list-none grid gap-[10px]">
+                        <li class="bg-white p-[10px] rounded-input flex justify-between items-center shadow-sm border border-[#f3f4f6]">
+                            <div>
+                                <div class="font-bold">30-day JS challenge</div>
+                                <div class="text-[13px] text-muted">Day 12 • 120 people active</div>
+                            </div>
+                            <button class="cursor-pointer font-bold px-3 py-2 rounded-lg border-2 border-solid border-input-border text-accent bg-transparent text-sm hover:bg-progress-bg transition">Join</button>
+                        </li>
+                        <li class="bg-white p-[10px] rounded-input flex justify-between items-center shadow-sm border border-[#f3f4f6]">
+                            <div>
+                                <div class="font-bold">Weekly Algo Sprint</div>
+                                <div class="text-[13px] text-muted">Sat • 10:00 AM</div>
+                            </div>
+                            <button class="cursor-pointer font-bold px-3 py-2 rounded-lg border-2 border-solid border-input-border text-accent bg-transparent text-sm hover:bg-progress-bg transition">RSVP</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <aside class="bg-card p-[18px] rounded-xl h-full flex flex-col gap-3 shadow-lg shadow-slate-900/5" aria-labelledby="progress-title">
+                <h4 id="progress-title" class="font-semibold mb-1.5">Learning streak</h4>
+                <div class="flex justify-between items-center gap-3">
+                    <div>
+                        <div class="text-[13px] text-muted">This week</div>
+                        <div class="font-bold">4 days</div>
+                    </div>
+                    <div class="flex-1 h-2.5 overflow-hidden rounded-lg bg-progress-bg" aria-hidden="true">
+                        <span class="block h-full w-[64%] bg-gradient-to-r from-progress-grad-1 to-progress-grad-2"></span>
+                    </div>
+                </div>
+
+                <hr class="border-t border-[#f3f4f6] my-1">
+
+                <div>
+                    <h4 class="font-semibold mb-1.5">Recommended topic</h4>
+                    <div class="font-bold">APIs with Express</div>
+                    <p class="text-[13px] text-muted mt-2">A short path to build and deploy a REST API in under an hour.</p>
+                </div>
+
+                <hr class="border-t border-[#f3f4f6] my-1">
+
+                <div class="mt-auto pt-2">
+                    <h4 class="font-semibold mb-2">Account</h4>
+                    <div class="text-[13px] text-muted">Email: student@example.com</div>
+                    <button class="mt-[10px] cursor-pointer font-bold px-3 py-2 rounded-lg border-2 border-solid border-input-border text-accent bg-transparent text-sm hover:bg-progress-bg transition">Manage plan</button>
+                </div>
+            </aside>
+        </section>
+
+        <footer class="grid grid-cols-[1fr_1fr] gap-4 mt-4.5 items-start sm:grid-cols-1">
+            <div>
+                <div class="font-extrabold">StudyHub</div>
+                <div class="text-[13px] text-muted">Learn together • Build faster</div>
+            </div>
+            <div class="flex gap-3 flex-wrap justify-end">
+                <a class="text-[13px] text-muted hover:text-accent transition" href="#">Terms</a>
+                <a class="text-[13px] text-muted hover:text-accent transition" href="#">Privacy</a>
+                <a class="text-[13px] text-muted hover:text-accent transition" href="#">Support</a>
+            </div>
+        </footer>
+    </div>
 </body>
-
 </html>
