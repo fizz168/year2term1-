@@ -14,9 +14,9 @@ class Graph{
     l = new list<int> [v]; // arr = new int[v]
       
     } 
- void addEdge(int u, int v){
+ void addEdge(int u, int v){ // undirected graph so v  to u neighbor list 
     l[u].push_back(v);
-    l[v].push_back(u);
+    l[v].push_back(u);  
  }  
 //  void printAdjency(){
 //     for(int i =0; i < v; i++){
@@ -47,20 +47,21 @@ class Graph{
     cout << "\n--- Output Complete ---\n" << endl;
  }
  void bfs(){
-    queue<int> q;
-    vector<bool> vis(v, false);
-    q.push(0);
-    vis[0] = true;
+    queue<int> q; // the queue hold node to be visited (fifo)
+    vector<bool> vis(v, false); // prevent visit old node multiple time 
+    q.push(0); //check from 0
+    vis[0] = true; // mark the starting node visit 
 
-    while(q.size() > 0){
-        int u = q.front();
-        q.pop();
+    while(q.size() > 0){ //Loop continues as long as there are nodes waiting in the queue.
+        int u = q.front();// Get the node at the front of the queue.
+        q.pop();// remove node from the queue
 
-        cout<<u<< " ";
-        for(int v : l[u]){
-            if(!vis[v]){
-                vis[v] = true;
-                q.push(v);
+        cout<<u<< " ";// Process the node (in this case, just printing its index).
+        for(int v : l[u]){// 3. Look at all the neighbors ('v') of the current node ('u').
+            if(!vis[v]){// Check if the neighbor 'v' has NOT been visited yet.
+                vis[v] = true;// Mark the new neighbor 'v' as visited.
+                q.push(v);// Add the new neighbor 'v' to the end of the queue.
+                    // This ensures we visit all current neighbors' neighbors later (Layer-by-Layer).
             }
         }
     }
