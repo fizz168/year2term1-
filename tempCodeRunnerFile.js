@@ -1,3 +1,10 @@
-let arr = [1, 2, 3, 4, 5];
-// arr.reverse();
-// console.log(arr);
+function challenge1(width, height){
+    for(let i = 0; i < height; i++){
+        for( let j = 0; j < width; j++){
+      process.stdout.write("* ");
+        }
+        console.log("");
+
+    }
+}
+challenge1(5, 2);
