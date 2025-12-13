@@ -17,15 +17,15 @@ challenge1(5, 2);
 
 
 //challenge 3 average student 
-// function average(array){
-// let sum = 0;
-// for(let i = 0; i < number.length; i++){
-//         sum += array[i];
-// }
-//     const average = sum / number.length;
-//     return average; 
+function average(array){
+let sum = 0;
+for(let i = 0; i < number.length; i++){
+        sum += array[i];
+}
+    const average = sum / number.length;
+    return average; 
 
-// }
+}
 
 // const number = [10, 20, 30];
 // console.log(average(number));
