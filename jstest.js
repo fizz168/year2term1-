@@ -47,14 +47,14 @@ for(let i = 0; i < number.length; i++){
 // console.log(`The character "${targetchar}" appears ${occurrences} times.`); 
 
 //challenge 5 : count every number of word in a sentence 
-    // function countNumberOfWord(str){
-    //     const trimmedStr = str.trim();
-    //     if(trimmedStr === ""){
-    //         return 0;
-    //     }
-    //     return trimmedStr.split(/\s+/).length;
-    // }
-    // console.log(countNumberOfWord("hello "));
+    function countNumberOfWord(str){
+        const trimmedStr = str.trim();
+        if(trimmedStr === ""){
+            return 0;
+        }
+        return trimmedStr.split(/\s+/).length;
+    }
+    console.log(countNumberOfWord("hello "));
 
 // function simulateVote(voteArray){
 //     const count = {
